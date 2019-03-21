@@ -13,4 +13,5 @@ public class Pages {
 
     public static MainPage Home = new MainPage(driver);
     public static LoginPage loginPage = new LoginPage(driver);
+    public static PostAdPage postAdPage = new PostAdPage(driver);
 }

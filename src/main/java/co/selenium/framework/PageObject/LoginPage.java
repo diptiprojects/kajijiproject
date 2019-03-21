@@ -18,8 +18,6 @@ public class LoginPage extends Pages {
     WebElement emailAddress;
     @FindBy(id = "login-password")
     WebElement password;
-    //    @FindBy(id = "SignInButton")
-//    WebElement btnSignIn;
     @FindBy(id = "login-rememberMe")
     WebElement chkRemember;
     @FindBy(xpath = "//button[@id='SignInButton']")
@@ -36,6 +34,14 @@ public class LoginPage extends Pages {
 
 
     public LoginPage(WebDriver driver){ super(driver); }
+
+    public void enterLoginDetailWithoutCredentials(){
+        try {
+            emailAddress.sendKeys("");
+            password.sendKeys("");
+        }
+        catch (Exception e){}
+    }
 
     public void enterValidUserLogInDetail(){
         try{
@@ -61,14 +67,6 @@ public class LoginPage extends Pages {
             }
         }
         catch (IOException io){}
-    }
-
-    public void enterLoginDetailWithoutCredentials(){
-        try {
-            emailAddress.sendKeys("");
-            password.sendKeys("");
-        }
-        catch (Exception e){}
     }
 
     public void selectRememberOption(){

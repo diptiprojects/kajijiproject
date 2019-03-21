@@ -5,31 +5,32 @@ import co.selenium.framework.TestResult;
 import co.selenium.framework.Utils.ScreenshotTaker;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest {
+public class PostAdTest extends BaseTest {
 
     @Test
-    public void LoginWithoutCredentials(){
-        try
-        {
-            Pages.Home.selectPostAd();
-            Pages.loginPage.enterLoginDetailWithoutCredentials();
-            Pages.loginPage.selectRememberOption();
-            Pages.loginPage.clickSignInbtn();
-        }
-        catch (Exception e){
-            ScreenshotTaker.captureScreenShot(TestResult.FAIL, this.getClass().toString());
-        }
-    }
-
-    @Test(priority = 1)
-    public void ValidUserLogin(){
-        try {
+    public void invalidPosAdTitle(){
+        try{
             Pages.Home.selectPostAd();
             Pages.loginPage.enterValidUserLogInDetail();
             Pages.loginPage.selectRememberOption();
             Pages.loginPage.clickSignInbtn();
+            Pages.postAdPage.enterInvalidPostAdTitle("QA Aut");
         }
-        catch (Exception e) {
+        catch (Exception exec){
+            ScreenshotTaker.captureScreenShot(TestResult.FAIL, this.getClass().toString());
+        }
+    }
+
+    @Test
+    public void validPosAdTitle(){
+        try{
+            Pages.Home.selectPostAd();
+            Pages.loginPage.enterValidUserLogInDetail();
+            Pages.loginPage.selectRememberOption();
+            Pages.loginPage.clickSignInbtn();
+            Pages.postAdPage.enterValidPostAdTitle("QA Automation");
+        }
+        catch (Exception exec){
             ScreenshotTaker.captureScreenShot(TestResult.FAIL, this.getClass().toString());
         }
     }
