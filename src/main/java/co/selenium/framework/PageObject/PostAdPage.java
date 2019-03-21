@@ -21,7 +21,7 @@ public class PostAdPage extends Pages {
     public void enterInvalidPostAdTitle(String title){
         txtTitle.sendKeys(title);
         if(spnCountChar.isDisplayed()){
-            Assert.assertTrue(true, "Invalid character length");
+            Assert.assertTrue(btnNext.isEnabled() == false, "Invalid character length");
         }
     }
 

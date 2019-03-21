@@ -8,28 +8,37 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest {
 
     @Test
-    public void LoginWithoutCredentials(){
-        try
-        {
+    public void LoginWithoutCredentials() {
+        try {
             Pages.Home.selectPostAd();
             Pages.loginPage.enterLoginDetailWithoutCredentials();
             Pages.loginPage.selectRememberOption();
             Pages.loginPage.clickSignInbtn();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             ScreenshotTaker.captureScreenShot(TestResult.FAIL, this.getClass().toString());
         }
     }
 
     @Test(priority = 1)
-    public void ValidUserLogin(){
+    public void ValidUserLogin() {
         try {
             Pages.Home.selectPostAd();
             Pages.loginPage.enterValidUserLogInDetail();
             Pages.loginPage.selectRememberOption();
             Pages.loginPage.clickSignInbtn();
+        } catch (Exception e) {
+            ScreenshotTaker.captureScreenShot(TestResult.FAIL, this.getClass().toString());
         }
-        catch (Exception e) {
+    }
+
+    @Test(priority = 2)
+    public void ValidUserSignIn() {
+        try {
+            Pages.Home.clickOnSignIn();
+            Pages.loginPage.enterValidUserLogInDetail();
+            Pages.loginPage.selectRememberOption();
+            Pages.loginPage.clickSignInbtn();
+        } catch (Exception e) {
             ScreenshotTaker.captureScreenShot(TestResult.FAIL, this.getClass().toString());
         }
     }
