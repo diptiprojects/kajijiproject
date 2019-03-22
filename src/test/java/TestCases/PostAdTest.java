@@ -1,16 +1,18 @@
 package TestCases;
 
+import co.selenium.framework.Browser;
 import co.selenium.framework.PageObject.Pages;
 import co.selenium.framework.TestResult;
 import co.selenium.framework.Utils.ScreenshotTaker;
 import org.testng.annotations.Test;
+
 
 public class PostAdTest extends BaseTest {
 
     @Test
     public void invalidPosAdTitle(){
         try{
-            Pages.Home.selectPostAd();
+            Pages.Home.selectSignIn();
             Pages.loginPage.enterValidUserLogInDetail();
             Pages.loginPage.selectRememberOption();
             Pages.loginPage.clickSignInbtn();
@@ -22,12 +24,21 @@ public class PostAdTest extends BaseTest {
     }
 
     @Test
-    public void validPosAdTitle(){
-        try{
-            Pages.Home.selectPostAd();
+    public void validLoginDetail(){
+        try
+        {
+            Pages.Home.selectSignIn();
             Pages.loginPage.enterValidUserLogInDetail();
             Pages.loginPage.selectRememberOption();
             Pages.loginPage.clickSignInbtn();
+        }
+        catch (Exception e) {}
+    }
+    @Test
+    public void validPosAdTitle(){
+        try{
+            validLoginDetail();
+            Pages.postAdPage.selectPostAd();
             Pages.postAdPage.enterValidPostAdTitle("QA Automation");
         }
         catch (Exception exec){

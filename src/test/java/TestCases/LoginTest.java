@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void LoginWithoutCredentials() {
         try {
-            Pages.Home.selectPostAd();
+            Pages.Home.selectSignIn();
             Pages.loginPage.enterLoginDetailWithoutCredentials();
             Pages.loginPage.selectRememberOption();
             Pages.loginPage.clickSignInbtn();
@@ -20,9 +20,9 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(priority = 1)
-    public void ValidUserLogin() {
+    public void ValidUserSignIn() {
         try {
-            Pages.Home.selectPostAd();
+            Pages.Home.selectSignIn();
             Pages.loginPage.enterValidUserLogInDetail();
             Pages.loginPage.selectRememberOption();
             Pages.loginPage.clickSignInbtn();
@@ -31,15 +31,4 @@ public class LoginTest extends BaseTest {
         }
     }
 
-    @Test(priority = 2)
-    public void ValidUserSignIn() {
-        try {
-            Pages.Home.clickOnSignIn();
-            Pages.loginPage.enterValidUserLogInDetail();
-            Pages.loginPage.selectRememberOption();
-            Pages.loginPage.clickSignInbtn();
-        } catch (Exception e) {
-            ScreenshotTaker.captureScreenShot(TestResult.FAIL, this.getClass().toString());
-        }
-    }
 }
